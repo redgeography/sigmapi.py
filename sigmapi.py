@@ -40,7 +40,7 @@ __all__ = ["sigma", "pi"]
 def sigma(stop, func, *, step = 1, **var):
     (varname, start) = next(iter(var.items()))
     code = func.__code__
-    closures = inspect.getclosurevars(computation)
+    closures = inspect.getclosurevars(func)
     glbls = closures.globals.copy()
     glbls.update(closures.builtins)
     lcls = closures.nonlocals.copy()
@@ -56,7 +56,7 @@ def pi(stop, func, *, step = 1, **var):
     # to minimize name clashes from the arbitrary variable declaration
     (varname, start) = next(iter(var.items()))
     code = func.__code__
-    closures = inspect.getclosurevars(computation)
+    closures = inspect.getclosurevars(func)
     glbls = closures.globals.copy()
     glbls.update(closures.builtins)
     lcls = closures.nonlocals.copy()
