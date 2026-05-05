@@ -3,9 +3,9 @@
 
 Allows you to create sigma/pi the mathematical way. e.g. from
 
-6
-Σ i
-i = 1
+6   
+Σ i  
+i = 1  
 
 to
 
