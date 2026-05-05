@@ -2,7 +2,7 @@
 
 
 Allows you to create sigma/pi the mathematical way. e.g. from
-![A sigma function ( 6? )](Sigma.pmg)
+![A sigma function ( 6? )](Sigma.png)
 
 to
 
