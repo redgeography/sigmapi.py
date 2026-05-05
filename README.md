@@ -24,9 +24,6 @@ lambda: i,
 i = 1, step = 2
 )
 ```
-which isn't common math syntax but the thing is there *is* no common syntax
-for that.
-
 Provides 2 functions: `sigma()` and `pi()`.
 
 you can `from sigmapi import *` to get the functions as global variables,
