@@ -1,4 +1,6 @@
-# sigmapi.py
+sigmapi.py - Mathematical-like Σ (sigma/sum) and Π (pi/product)
+
+## Main
 
 
 Allows you to create sigma/pi the mathematical way. e.g. from
@@ -32,7 +34,7 @@ you can `from sigmapi import *` to get the functions as global variables,
 or even `from sigmapi import sigma, pi as piproduct` or some other name than
 `piproduct` to prevent clashes with the constant named `pi`.
 
-##Installation
+## Installation
 First, install Git and PIP, if you haven't already.
 Once installed, execute the command in your command prompt
 ```
