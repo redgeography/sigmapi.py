@@ -36,6 +36,7 @@ piproduct to prevent clashes with the constant named 'pi'
 
 __all__ = ["sigma", "pi"]
 
+import inspect
 
 def sigma(stop, func, *, step = 1, **var):
     (varname, start) = next(iter(var.items()))
