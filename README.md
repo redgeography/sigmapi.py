@@ -31,8 +31,3 @@ you can `from sigmapi import *` to get the functions as global variables,
 
 or even `from sigmapi import sigma, pi as piproduct` or some other name than
 `piproduct` to prevent clashes with the constant named `pi`
-
-
-        prod *= eval(code, glbls, lcls)
-        
-    return prod
