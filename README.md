@@ -35,6 +35,6 @@ or even `from sigmapi import sigma, pi as piproduct` or some other name than
 First, install Git and PIP, if you haven't already.
 Once installed, execute the command in your command prompt
 ```
-py -m pip install "git+https://github.com/redgeography/sigmapi.py.git#subdirectory=lib"
+pip install "git+https://github.com/redgeography/sigmapi.py.git#subdirectory=lib"
 ```
 This will take it straight from this github repo, and install it. From there you can import via `import sigmapi` or better yet  `from sigmapi import * `.
