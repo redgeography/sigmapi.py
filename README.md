@@ -2,7 +2,8 @@
 
 
 Allows you to create sigma/pi the mathematical way. e.g. from
-<img width="38" height="57" alt="A sigma function ( 6? )" src="https://github.com/user-attachments/assets/415477d2-0d76-454d-a92c-6691cf7f04e8" />
+![A sigma function ( 6? )](Sigma.pmg)
+
 to
 
 ```
