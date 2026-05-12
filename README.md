@@ -1,3 +1,5 @@
+##DO NOT USE THIS *YET*. IT IS IN AN EXPERIMENTAL LIBRARY NOT FOR COMMON USE YET
+
 
 sigmapi.py - Mathematical-like Σ (sigma/sum) and Π (pi/product)
 
