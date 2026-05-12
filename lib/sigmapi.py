@@ -14,21 +14,19 @@ lambda: i,
 i = 1
 )
 
-or even add a step like
+or even add a step, the syntax for that is
 
 sigma(
 6,
 lambda: i,
 i = 1, step = 2
 )
-which isn't common math syntax but the thing is there *is* no common syntax
-for that
 
 provides 2 functions: sigma() and pi().
 
-you can 'from sigmapi import *' to get the functions,
+you can `from sigmapi import *` to get the functions,
 
-or even 'from sigmapi import sigma, pi as piproduct' or some other name than
+or even `from sigmapi import sigma, pi as piproduct` or some other name than
 piproduct to prevent clashes with the constant named 'pi'
 
 """
@@ -36,34 +34,51 @@ piproduct to prevent clashes with the constant named 'pi'
 
 __all__ = ["sigma", "pi"]
 
-import inspect
+from types import CellType as cell, FunctionType as function
 
-def sigma(stop, func, *, step = 1, **var):
-    (varname, start) = next(iter(var.items()))
-    code = func.__code__
-    closures = inspect.getclosurevars(func)
-    glbls = closures.globals.copy()
-    glbls.update(closures.builtins)
-    lcls = closures.nonlocals.copy()
+
+def inject(fn, varname):
+    code = fn.__code__
+    cll = cell()
+    lcls = [ *code.co_freevars]
+    cells = [*fn.__closure__]
+    try:
+        idx = lcls.index(varname)
+        lcls.remove(idx)
+        cells.remove(idx)
+    except IndexError:
+        pass
+    
+    lcls.insert(0, varname)
+    cells.insert(0, cll)
+    code = code.replace(co_freevars = (*lcls,))
+    new = function(code, fn.__globals__, fn.__name__, fn.__argdefs__, (*cells,), fn.__kwdefaults__)
+    return (new, cll)
+
+
+
+def sigma(stop, func, /, *, step = 1, **var):
+    (varname, start) = (*var.items(),)[0]
+    (fnc, cll) = inject(func, varname)
     sum = 0
     for i in range(start, stop + step, step):
-        lcls[varname] = i
-        sum += eval(code, glbls, lcls)
+        cll.cell_contents = i
+        sum += fnc()
         
     return sum
 
-def pi(stop, func, *, step = 1, **var):
-    # just the sigma function modified for the product
-    # to minimize name clashes from the arbitrary variable declaration
-    (varname, start) = next(iter(var.items()))
-    code = func.__code__
-    closures = inspect.getclosurevars(func)
-    glbls = closures.globals.copy()
-    glbls.update(closures.builtins)
-    lcls = closures.nonlocals.copy()
+
+
+
+# just the sigma function modified for the product
+# to minimize name clashes from the arbitrary variable declaration
+
+def pi(stop, func, /, *, step = 1, **var):
+    (varname, start) = (*var.items(),)[0]
+    (fnc, cll) = inject(func, varname)
     prod = 1
     for i in range(start, stop + step, step):
-        lcls[varname] = i
-        prod *= eval(code, glbls, lcls)
+        cll.cell_contents = i
+        prod *= fnc()
         
     return prod
