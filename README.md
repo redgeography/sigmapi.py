@@ -1,5 +1,3 @@
-## NOTE: there is a weird bug i need to fix. Don't use this library for now.
-
 
 sigmapi.py - Mathematical-like Σ (sigma/sum) and Π (pi/product)
 
