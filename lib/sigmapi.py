@@ -41,7 +41,6 @@ def inject(fn, varname):
     code = fn.__code__
     cll = cell()
     lcls = [ *code.co_freevars]
-    cells = None
     if fn.__closure__ is None:
         cells = []
     else:
