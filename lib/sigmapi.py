@@ -41,11 +41,14 @@ def inject(fn, varname):
     code = fn.__code__
     cll = cell()
     lcls = [ *code.co_freevars]
+
+    
     if fn.__closure__ is None:
         cells = []
     else:
-        cells = [*fn.__closure__]
-    cells = [] if fn.__closure__ is None else [*fn.__closure__]
+        cells = list(fn.__closure__)
+
+    
     try:
         idx = lcls.index(varname)
         lcls.remove(idx)
