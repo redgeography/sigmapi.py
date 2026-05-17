@@ -50,10 +50,12 @@ def inject(fn, varname):
         cells = list(fn.__closure__)
         lcls = list(code.co_freevars)
 
-    if varname in lcls:
+    try:
         idx = lcls.index(varname)
         lcls.remove(idx)
         cells.remove(idx)
+    except ValueError:
+        pass
     
     lcls.insert(0, varname)
     cells.insert(0, cll)
