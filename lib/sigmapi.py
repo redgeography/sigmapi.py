@@ -40,13 +40,15 @@ from types import CellType as cell, FunctionType as function
 def inject(fn, varname):
     code = fn.__code__
     cll = cell()
-    lcls = [ *code.co_freevars]
+    
 
     
     if fn.__closure__ is None:
         cells = []
+        lcls = []
     else:
         cells = list(fn.__closure__)
+        lcls = list(code.co_freevars)
 
     
     try:
@@ -58,7 +60,7 @@ def inject(fn, varname):
     
     lcls.insert(0, varname)
     cells.insert(0, cll)
-    code = code.replace(co_freevars = (*lcls,))
+    code = code.replace(co_freevars = tuple(lcls)))
     new = function(code, fn.__globals__, fn.__name__, fn.__argdefs__, (*cells,), fn.__kwdefaults__)
     return (new, cll)
 
