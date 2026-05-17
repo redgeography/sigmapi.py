@@ -54,7 +54,7 @@ def inject(fn, varname):
         idx = lcls.index(varname)
         lcls.remove(idx)
         cells.remove(idx)
-    except ValueError:
+    except Exception:
         pass
     
     lcls.insert(0, varname)
