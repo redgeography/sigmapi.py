@@ -60,7 +60,7 @@ def inject(fn, varname):
     
     lcls.insert(0, varname)
     cells.insert(0, cll)
-    code = code.replace(co_freevars = tuple(lcls)))
+    code = code.replace(co_freevars = tuple(lcls))
     new = function(code, fn.__globals__, fn.__name__, fn.__argdefs__, (*cells,), fn.__kwdefaults__)
     return (new, cll)
 
