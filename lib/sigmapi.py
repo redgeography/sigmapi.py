@@ -52,8 +52,8 @@ def inject(fn, varname):
 
     try:
         idx = lcls.index(varname)
-        lcls.remove(idx)
-        cells.remove(idx)
+        lcls.pop(idx)
+        cells.pop(idx)
     except Exception:
         pass
     
